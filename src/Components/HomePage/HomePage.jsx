@@ -27,7 +27,7 @@ export default function HomePage() {
               <Search />
             </Route>
             <Route exact path="/">
-              <Page />
+              <Page pageValue={1}/>
             </Route>
           </Switch>
         </div>
