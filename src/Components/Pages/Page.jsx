@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ListItem from '../ListItem/ListItem';
 
-export default function Page(props) {
+export default function Page() {
   const [page, setPage] = useState(1);
   const [characters, setCharacters] = useState([]);
   const characterArr = [];

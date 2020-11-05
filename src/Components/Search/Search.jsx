@@ -3,7 +3,7 @@ import axios from 'axios';
 import ListItem from '../ListItem/ListItem';
 import './search.css';
 
-export default function Search(props) {
+export default function Search() {
   const [search, setSearch] = useState('');
   const [characters, setCharacters] = useState([]);
   const characterArr = [];
@@ -43,12 +43,6 @@ export default function Search(props) {
     setSearch(() => e.target.value);
   };
 
-  let showSearch;
-  if (characterArr !== undefined || characterArr !== null) {
-    showSearch = characterArr;
-  } else {
-    showSearch = `Sorry, we could't find what you were looking for.`;
-  }
 
   return (
     <div className="search-page-container">
@@ -61,7 +55,7 @@ export default function Search(props) {
           onChange={handleChange}
         ></input>
       </form>
-      {showSearch}
+      {characterArr}
     </div>
   );
 }

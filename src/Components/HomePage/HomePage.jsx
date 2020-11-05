@@ -9,7 +9,7 @@ export default function HomePage() {
     <Router>
       <div className="homepage-container">
         <div className="header">
-          <Link to="/" pageValue={1}>
+          <Link to="/">
             <button type="button" className="home-btn">
               <i className="fas fa-jedi"></i>
             </button>
@@ -26,8 +26,8 @@ export default function HomePage() {
             <Route path="/search">
               <Search />
             </Route>
-            <Route exact path="/">
-              <Page pageValue={1}/>
+            <Route path="/" exact={true}>
+              <Page />
             </Route>
           </Switch>
         </div>

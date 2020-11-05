@@ -1,8 +1,8 @@
 {
-  "homepage": "http://josiehpersson.github.io/starwars",
+  "homepage": "http://josiehpersson.github.io/",
   "name": "starwars",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
