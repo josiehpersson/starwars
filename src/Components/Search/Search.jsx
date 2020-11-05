@@ -1,37 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ListItem from '../ListItem/ListItem';
+import './search.css';
 
 export default function Search(props) {
-const [search, setSearch] = useState('');
-const [characters, setCharacters] = useState([]);
-const characterArr = [];
+  const [search, setSearch] = useState('');
+  const [characters, setCharacters] = useState([]);
+  const characterArr = [];
 
-useEffect(()=> {
-    const searchValue = props.searchValue;
-    setSearch(() => searchValue);
-},[props.searchValue]);
-
-useEffect(() => {
+  useEffect(() => {
     const baseURL = 'https://swapi.dev/api/people/?search=';
     axios
-    .get(`${baseURL}${search}`)
-    .then((res) => {
-      console.log(res.data);
-      setCharacters(res.data.results);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  }, [search])
+      .get(`${baseURL}${search}`)
+      .then((res) => {
+        console.log(res.data);
+        setCharacters(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [search]);
 
   for (let i = 0; i < characters.length; i++) {
     characterArr.push(
       <ListItem
         key={JSON.stringify(characters[i])}
         characterArr={characters[i]}
-        created={characters[i].created.slice(0,10)}
+        created={characters[i].created.slice(0, 10)}
         name={characters[i].name}
         height={characters[i].height}
         mass={characters[i].mass}
@@ -44,16 +39,29 @@ useEffect(() => {
     );
   }
 
+  const handleChange = (e) => {
+    setSearch(() => e.target.value);
+  };
+
   let showSearch;
-  if(characterArr!== undefined) {
-      showSearch = characterArr;
+  if (characterArr !== undefined || characterArr !== null) {
+    showSearch = characterArr;
   } else {
-      showSearch = `Sorry, we could't find what you were looking for.`
+    showSearch = `Sorry, we could't find what you were looking for.`;
   }
 
-return(
+  return (
     <div className="search-page-container">
-        {showSearch}
+      <form className="search-container">
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Type to search & may the force be with you!"
+          value={search}
+          onChange={handleChange}
+        ></input>
+      </form>
+      {showSearch}
     </div>
-)
+  );
 }

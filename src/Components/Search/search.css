@@ -1,0 +1,11 @@
+.search-page-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.search-bar {
+    width: 50vw;
+    margin: 3rem;
+}
