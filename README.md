@@ -1,6 +1,6 @@
 # Installation Instructions
-npm i react
-npm i axios
+npm i react <br>
+npm i axios <br>
 npm i react-router
 
 # Getting Started with Create React App
