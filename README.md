@@ -1,3 +1,8 @@
+# Installation Instructions
+npm i react
+npm i axios
+npm i react-router
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
