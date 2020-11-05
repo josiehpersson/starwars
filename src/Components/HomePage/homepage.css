@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(180deg, #020067 0%, #000000 100%);
+    background: #000014;
 }
 
 .homepage-container {
@@ -77,9 +77,21 @@ body {
 }
 
 .nav-btn {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
     color: white;
     background-color: transparent;
     border: none;
     font-size: 200%;
+}
+
+.nav-btn > p {
+    margin: 1em;
+}
+
+.nav-btn:hover {
+    cursor: pointer;
 }
 

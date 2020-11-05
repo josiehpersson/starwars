@@ -2,34 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ListItem from '../ListItem/ListItem';
 
-export default function Page(props) {
-  const [page, setPage] = useState(1);
-  const [showSearch, setShowSearch] = useState('');
-  const [characters, setCharacters] = useState([]);
-  const characterArr = [];
+export default function Search(props) {
+const [search, setSearch] = useState('');
+const [characters, setCharacters] = useState([]);
+const characterArr = [];
 
-  useEffect(() => {
-    const pageValue= props.pageValue;
-      setPage(() => pageValue);
-  },[props.pageValue]);
+useEffect(()=> {
+    const searchValue = props.searchValue;
+    setSearch(() => searchValue);
+},[props.searchValue]);
 
-  useEffect(() => {
-    const baseURL = 'https://swapi.dev/api/people/?page=';
-    axios
-    .get(`${baseURL}${page}`)
-    .then((res) => {
-      console.log(res.data);
-      setCharacters(res.data.results);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }, [page]);
-/*
-  useEffect(() => {
+useEffect(() => {
     const baseURL = 'https://swapi.dev/api/people/?search=';
     axios
-    .get(`${baseURL}${showSearch}`)
+    .get(`${baseURL}${search}`)
     .then((res) => {
       console.log(res.data);
       setCharacters(res.data.results);
@@ -38,9 +24,8 @@ export default function Page(props) {
       console.log(err);
     });
 
-  }, [showSearch])
+  }, [search])
 
-  */
   for (let i = 0; i < characters.length; i++) {
     characterArr.push(
       <ListItem
@@ -59,10 +44,16 @@ export default function Page(props) {
     );
   }
 
-  return(
-      <div className="page-container">
-        <div className="characters-container">{characterArr}</div>
-      </div>
-      
-      ) 
+  let showSearch;
+  if(characterArr!== undefined) {
+      showSearch = characterArr;
+  } else {
+      showSearch = `Sorry, we could't find what you were looking for.`
+  }
+
+return(
+    <div className="search-page-container">
+        {showSearch}
+    </div>
+)
 }
